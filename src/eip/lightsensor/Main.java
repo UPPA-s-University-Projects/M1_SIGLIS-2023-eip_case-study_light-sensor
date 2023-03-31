@@ -15,16 +15,21 @@ public class Main {
 	        PubSubService pubSubService = new PubSubService();
 	        
 	        //Nous créons une lumière 
-	        Light light = new Light();
+	        Light lightSM = new Light("Salle à manger");
 	        
 	        //Nous créons un nouveau lightController et lui attachons la lumière. 
-	        LightController lightController = new LightController(light);
+	        LightController lightControllerSM = new LightController(lightSM);
+	        
+	        Light lightCuisine = new Light("Cuisine");
+	        
+	        LightController lightControllerCuisine = new LightController(lightCuisine);
 	        
 	      //Nous créons un sensor 
 	        MotionSensor motionSensor = new MotionSensor();
 
 	        //Nous abonnons le lightController à notre liste d'abonnées
-	        pubSubService.subscribe(lightController);
+	        pubSubService.subscribe(lightControllerSM);
+	        pubSubService.subscribe(lightControllerCuisine);
 
 	        //On fait tourner aléatoirement le détecteur de mouvement pour simuler la présence ou non de personne
 	        while (true) {
